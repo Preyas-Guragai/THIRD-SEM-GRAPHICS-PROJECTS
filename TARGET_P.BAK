@@ -57,8 +57,7 @@ int main()
 	      // remainder is any value but always less than 20
        }
 
-       while(running) //exit on key press,
-       // kbhit returns 0 if no key pressesd and returns 1  if key is pressed
+       while(running)
        {
        cleardevice();
 
@@ -91,11 +90,11 @@ int main()
 
 	       sprintf(scoreText," score: %d", score);
 	       setcolor(YELLOW);
-	       outtextxy(10,10, scoreText);
+	       outtextxy(10,10, scoreText); // 10,10 is the coordinates where scoreText has to be displayed. (0,0) is the top left corner.
 
 	       //keyboard input
 
-	       if(kbhit())
+	       if(kbhit())    // kbhit returns 0 if no key pressesd and returns 1  if key is pressed
 	       {
 	       key=getch();
 
@@ -107,7 +106,10 @@ int main()
 		  crosshairY-=10;
 		  break;
 		  }
-
+                              
+                                        //in computer graphics, the y axix increases from
+	                     	      // top to bottom. so, whenever 'w' is pressed, the crosshair has to
+		                     // move up but y axis decreases when moving up
 
 		  case 's':
 		  if(crosshairY<maxy-10)
@@ -150,14 +152,15 @@ int main()
 		    }
 	  }
 	  break;
-	  case 27:
+	  case 27: // this is the case for quiting the game. ascii value of esc key is 27. whenever esc key is pressed, 
+                   //the running=0, and the while(running) is false. so the entire loops terminates and game is exited.
 	  running=0;
 	  break;
 
 	  }
        }
 
-   delay(30);
+   delay(20);
    }
    getch();
    closegraph();
