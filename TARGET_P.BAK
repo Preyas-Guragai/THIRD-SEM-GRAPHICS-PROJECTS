@@ -17,6 +17,13 @@ int active;
 
 };
 
+void make_sound_when_hit_spacebar()
+{
+sound(500); // frequency is 500 Hz;
+delay(100); //play sound for 100 millisecond
+nosound(); //stop the sound;
+}
+
 int main()
     {
     int gd =DETECT, gm;
@@ -133,6 +140,8 @@ int main()
 		  }
 
 		  case ' ':
+                         make_sound_when_hit_spacebar();
+
 		    for(i=0; i<MAX_TARGETS; i++)
 		    {
 		      if(targets[i].active)
